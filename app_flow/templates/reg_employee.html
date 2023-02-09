@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.username.label() }}<br>
+            {{ form.username() }}
+        </div>
+        <div class="mb-3">
+            {{ form.surname.label() }}<br>
+            {{ form.surname() }}
+        </div>
+        <div class="mb-3">
+            {{ form.lastname.label() }}<br>
+            {{ form.lastname() }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label() }}<br>
+            {{ form.email() }}
+        </div>
+        <div class="mb-3">
+            {{ form.company_tax_identification_number.label() }}<br>
+            {{ form.company_tax_identification_number() }}
+        </div>
+        <div class="mb-3">
+            {{ form.password.label() }}<br>
+            {{ form.password() }}
+        </div>
+        <div class="mb-3">
+            {{ form.password2.label() }}<br>
+            {{ form.password2() }}
+        </div>
+        <button type="submit" class="btn btn-primary">
+            {{ form.submit() }}
+        </button>
+    </form>
+{% endblock %}
