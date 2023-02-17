@@ -1,38 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="" method="post">
+    <form action="{{ url_for('register.employee_register_procces') }}" method="post">
         {{ form.hidden_tag() }}
-        <div class="mb-3">
-            {{ form.username.label() }}<br>
-            {{ form.username() }}
+        <div class="col-auto mb-3">
+            {{ form.last_name.label(class="form-label") }}<br>
+            {{ form.last_name(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.surname.label() }}<br>
-            {{ form.surname() }}
+            {{ form.first_name.label(class="form-label") }}<br>
+            {{ form.first_name(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.lastname.label() }}<br>
-            {{ form.lastname() }}
+            {{ form.patronymic.label(class="form-label") }}<br>
+            {{ form.patronymic(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.email.label() }}<br>
-            {{ form.email() }}
+            {{ form.email.label(class="form-label") }}<br>
+            {{ form.email(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.company_tax_identification_number.label() }}<br>
-            {{ form.company_tax_identification_number() }}
+            {{ form.company_tax_identification_number.label(class="form-label") }}<br>
+            {{ form.company_tax_identification_number(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.password.label() }}<br>
-            {{ form.password() }}
+            {{ form.password.label(class="form-label") }}<br>
+            {{ form.password(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.password2.label() }}<br>
-            {{ form.password2() }}
+            {{ form.password2.label(class="form-label") }}<br>
+            {{ form.password2(class="form-control") }}
         </div>
         <button type="submit" class="btn btn-primary">
-            {{ form.submit() }}
+            {{ form.submit(type="submit", class="btn btn-primary") }}
         </button>
     </form>
 {% endblock %}

@@ -21,6 +21,6 @@ def create_app():
     @app.route('/')
     def index():
         title = 'Главная страница'
-        return render_template('base.html', title=title)
+        return render_template('index.html', title=title)
 
     return app
