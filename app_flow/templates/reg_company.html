@@ -1,31 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% with messages = get_flashed_messages() %}
+    {% if message %}
+        <div class="alert alert-warning" role="alert">
+            {{ messages }}
+        </div>
+    {% endif %}
+    {% endwith %}
     <form action="{{ url_for('register.company_register_procces') }}" method="post">
         {{ form.hidden_tag() }}
         <div class="col-auto mb-3">
-            {{ form.type_company.label(class="form-label") }}<br>
-            {{ form.type_company(class="form-control") }}
+            {{ form.type_company(class="form-control", placeholder="Форма собственности (ПАО, ОАО, ООО и т.д.)") }}
         </div>
         <div class="mb-3">
-            {{ form.company_name.label(class="form-label") }}<br>
-            {{ form.company_name(class="form-control") }}
+            {{ form.company_name(class="form-control", placeholder="Наименование компании (без формы собственности)") }}
         </div>
         <div class="mb-3">
-            {{ form.email.label(class="form-label") }}<br>
-            {{ form.email(class="form-control") }}
+            {{ form.email(class="form-control", placeholder="Электронная почта") }}
         </div>
         <div class="mb-3">
-            {{ form.tax_identification_number.label(class="form-label") }}<br>
-            {{ form.tax_identification_number(class="form-control") }}
+            {{ form.tax_identification_number(class="form-control", placeholder="ИНН") }}
         </div>
         <div class="mb-3">
-            {{ form.password.label(class="form-label") }}<br>
-            {{ form.password(class="form-control") }}
+            {{ form.password(class="form-control", placeholder="Введите пароль") }}
         </div>
         <div class="mb-3">
-            {{ form.password2.label(class="form-label") }}<br>
-            {{ form.password2(class="form-control") }}
+            {{ form.password2(class="form-control", placeholder="Повторите пароль") }}
         </div>
         <button type="submit" class="btn btn-primary">
             {{ form.submit(type="submit", class="btn btn-primary") }}

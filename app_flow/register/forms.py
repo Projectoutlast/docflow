@@ -33,7 +33,7 @@ class EmployeeRegister(FlaskForm):
     email = StringField(
         'Введите Вашу электронную почту', validators=[
             DataRequired(), Length(max=30)])
-    company_tax_identification_number = IntegerField(
+    tax_identification_number = IntegerField(
         'Введите ИНН компании', validators=[DataRequired()])
     password = PasswordField(
         'Введите пароль', validators=[

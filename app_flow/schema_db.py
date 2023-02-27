@@ -1,15 +1,17 @@
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app_flow.db import db
 
 
-class Company(db.Model):
+class Company(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     type_company = db.Column(db.String, nullable=False)
     company_name = db.Column(db.String, nullable=False)
-    company_email = db.Column(db.String, unique=True, nullable=True)
-    tax_identification_number = db.Column(db.Integer, unique=True)
+    company_email = db.Column(db.String, unique=True, nullable=False)
+    tax_identification_number = db.Column(db.Integer,
+                                          unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
 
     def set_password(self, password: str) -> str:
@@ -22,7 +24,7 @@ class Company(db.Model):
         return "Company {}, id - {}".format(self.company_name, self.id)
 
 
-class Employee(db.Model):
+class Employee(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(
