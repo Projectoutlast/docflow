@@ -25,16 +25,31 @@ def company_register_procces():
 
     form = CompanyRegister()
     if form.validate_on_submit():
-        company = Company(
+        company_email = Company.query.filter_by(
+                company_email=form.email.data
+            ).first()
+        tax_number = Company.query.filter_by(
+            tax_identification_number=form.tax_identification_number.data
+            ).first()
+
+        if tax_number:
+            flash('Компания с таким ИНН уже существует')
+            return redirect(url_for('register.register_company'))
+
+        if company_email:
+            flash('Компания с таким email уже существует')
+            return redirect(url_for('register.register_company'))
+
+        new_company = Company(
             type_company=form.type_company.data,
             company_name=form.company_name.data,
             company_email=form.email.data,
             tax_identification_number=form.tax_identification_number.data
         )
-        company.set_password(form.password.data)
-        db.session.add(company)
+        new_company.set_password(form.password.data)
+        db.session.add(new_company)
         db.session.commit()
-        flash('Компания успешно зарегистрорована')
+        flash('Компания успешно зарегистрирована')
         return redirect(url_for('index'))
     else:
         for field, errors in form.errors.items():
@@ -63,21 +78,28 @@ def employee_register_procces():
 
     form = EmployeeRegister()
     if form.validate_on_submit():
+        employee = Employee.query.filter_by(
+            employee_email=form.email.data).first()
+
+        if employee:
+            flash('Пользователь с таким email уже зарегистрирован')
+            return redirect(url_for('register.register_employee'))
+
         company_id = db.session.query(Company.id).filter_by(
-            tax_identification_number=form.company_tax_identification_number.data
-        )
-        employee = Employee(
-            company_id=company_id.first()[0],
+            tax_identification_number=form.tax_identification_number.data
+        ).first()
+        new_employee = Employee(
+            company_id=company_id[0],
             last_name=form.last_name.data,
             first_name=form.first_name.data,
             patronymic=form.patronymic.data,
             employee_email=form.email.data
         )
-        employee.set_password(form.password.data)
-        db.session.add(employee)
+        new_employee.set_password(form.password.data)
+        db.session.add(new_employee)
         db.session.commit()
         flash('Вы успешно зарегистрированы')
-        return redirect(url_for('index'))
+        return redirect(url_for('auth.authentication'))
     else:
         for field, errors in form.errors.items():
             for error in errors:
