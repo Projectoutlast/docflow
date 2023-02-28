@@ -42,8 +42,3 @@ class Employee(UserMixin, db.Model):
 
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password, password)
-
-    def __repr__(self) -> str:
-        return "User {} {} {}, id - {}".format(
-            self.last_name, self.first_name, self.patronymic,
-            self.id)

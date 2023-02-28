@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
 
-blueprint = Blueprint('work', __name__, url_prefix='/work')
+blueprint = Blueprint('work', __name__)
 
 
 @blueprint.route('/space', methods=['POST', 'GET'])
