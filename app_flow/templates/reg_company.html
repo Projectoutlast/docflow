@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% with messages = get_flashed_messages() %}
-    {% if message %}
-        <div class="alert alert-warning" role="alert">
-            {{ messages }}
+    <div class="row">
+        <div class="col">
         </div>
-    {% endif %}
-    {% endwith %}
-    <form action="{{ url_for('register.company_register_procces') }}" method="post">
-        {{ form.hidden_tag() }}
-        <div class="col-auto mb-3">
-            {{ form.type_company(class="form-control", placeholder="Форма собственности (ПАО, ОАО, ООО и т.д.)") }}
+        <div class="col-9">
+            <form action="{{ url_for('register.company_register_procces') }}" method="post">
+                {{ form.hidden_tag() }}
+                {% include('messages.html') %}
+                <div class="col-auto mb-3">
+                    {{ form.type_company(class="form-control", placeholder="Форма собственности (ПАО, ОАО, ООО и т.д.)") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.company_name(class="form-control", placeholder="Наименование компании (без формы собственности)") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email(class="form-control", placeholder="Электронная почта") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.tax_identification_number(class="form-control", placeholder="ИНН") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password(class="form-control", placeholder="Введите пароль") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password2(class="form-control", placeholder="Повторите пароль") }}
+                </div>
+                    {{ form.submit(type="submit", class="btn btn-primary btn-sm") }}
+            </form>
         </div>
-        <div class="mb-3">
-            {{ form.company_name(class="form-control", placeholder="Наименование компании (без формы собственности)") }}
+        <div class="col">
         </div>
-        <div class="mb-3">
-            {{ form.email(class="form-control", placeholder="Электронная почта") }}
-        </div>
-        <div class="mb-3">
-            {{ form.tax_identification_number(class="form-control", placeholder="ИНН") }}
-        </div>
-        <div class="mb-3">
-            {{ form.password(class="form-control", placeholder="Введите пароль") }}
-        </div>
-        <div class="mb-3">
-            {{ form.password2(class="form-control", placeholder="Повторите пароль") }}
-        </div>
-        <button type="submit" class="btn btn-primary">
-            {{ form.submit(type="submit", class="btn btn-primary") }}
-        </button>
-    </form>
+    </div>
 {% endblock %}
