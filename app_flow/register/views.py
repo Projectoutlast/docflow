@@ -52,12 +52,6 @@ def company_register_procces():
         flash('Компания успешно зарегистрирована')
         return redirect(url_for('index'))
     else:
-        for field, errors in form.errors.items():
-            for error in errors:
-                flash('Error in field "{}" - {}'.format(
-                    getattr(form, field).label.text,
-                    error
-                ))
         return redirect(url_for('register.register_company'))
 
 
@@ -81,13 +75,18 @@ def employee_register_procces():
         employee = Employee.query.filter_by(
             employee_email=form.email.data).first()
 
+        company_id = db.session.query(Company.id).filter_by(
+            tax_identification_number=form.tax_identification_number.data
+        ).first()
+
         if employee:
             flash('Пользователь с таким email уже зарегистрирован')
             return redirect(url_for('register.register_employee'))
 
-        company_id = db.session.query(Company.id).filter_by(
-            tax_identification_number=form.tax_identification_number.data
-        ).first()
+        if not company_id:
+            flash('Компания с таким ИНН не зарегистрирована')
+            return redirect(url_for('register.register_employee'))
+
         new_employee = Employee(
             company_id=company_id[0],
             last_name=form.last_name.data,

@@ -1,31 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="{{ url_for('register.employee_register_procces') }}" method="post">
-        {{ form.hidden_tag() }}
-        <div class="col-auto mb-3">
-            {{ form.last_name(class="form-control", placeholder="Введите фамилию") }}
+    <div class="row">
+        <div class="col">
         </div>
-        <div class="mb-3">
-            {{ form.first_name(class="form-control", placeholder="Введите имя") }}
+        <div class="col-9">
+            <form action="{{ url_for('register.employee_register_procces') }}" method="post">
+                {{ form.hidden_tag() }}
+                {% include('messages.html') %}
+                <div class="col-auto mb-3">
+                    {{ form.last_name(class="form-control", placeholder="Введите фамилию") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.first_name(class="form-control", placeholder="Введите имя") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.patronymic(class="form-control", placeholder="Введите отчество") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email(class="form-control", placeholder="Введите электронную почту") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.tax_identification_number(class="form-control", placeholder="Введите ИНН компании") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password(class="form-control", placeholder="Введите пароль") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password2(class="form-control", placeholder="Повторите пароль") }}
+                </div>
+                    {{ form.submit(type="submit", class="btn btn-primary btn-sm") }}
+            </form>
         </div>
-        <div class="mb-3">
-            {{ form.patronymic(class="form-control", placeholder="Введите отчество") }}
+        <div class="col">
         </div>
-        <div class="mb-3">
-            {{ form.email(class="form-control", placeholder="Введите электронную почту") }}
-        </div>
-        <div class="mb-3">
-            {{ form.tax_identification_number(class="form-control", placeholder="Введите ИНН компании") }}
-        </div>
-        <div class="mb-3">
-            {{ form.password(class="form-control", placeholder="Введите пароль") }}
-        </div>
-        <div class="mb-3">
-            {{ form.password2(class="form-control", placeholder="Повторите пароль") }}
-        </div>
-        <button type="submit" class="btn btn-primary">
-            {{ form.submit(type="submit", class="btn btn-primary") }}
-        </button>
-    </form>
+    </div>
 {% endblock %}
