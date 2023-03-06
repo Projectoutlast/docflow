@@ -34,7 +34,7 @@ def login_post():
 
         if user and check_password_hash(user.password, password):
             login_user(user, remember=remember)
-            return redirect(url_for('work.space'))
+            return redirect(url_for('workplace.home'))
         else:
             flash('Неверные почта или пароль')
             return redirect(url_for('auth.login'))
@@ -44,4 +44,4 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.login'))

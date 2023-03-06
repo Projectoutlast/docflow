@@ -98,7 +98,7 @@ def employee_register_procces():
         db.session.add(new_employee)
         db.session.commit()
         flash('Вы успешно зарегистрированы')
-        return redirect(url_for('auth.authentication'))
+        return redirect(url_for('auth.login'))
     else:
         for field, errors in form.errors.items():
             for error in errors:
