@@ -1,0 +1,17 @@
+{% extends "base_workspace.html" %}
+
+{% block content %}
+<form action="" method="POST">
+    <div class="col-7 mb-3 text-start">
+        <label for="exampleFormControlInput1" class="form-label">Тема</label>
+        {{ form.title(class="form-control row-3") }}
+    </div>
+    <div class="col-auto mb-3 text-start">
+        <label for="exampleFormControlTextarea1" class="form-label">Описание</label>
+        {{ form.describe(class="form-control", rows="7") }}
+    </div>
+    <div class="form-check">
+        {{ form.submit }}
+    </div>
+</form>
+{% endblock %}

@@ -1,6 +1,8 @@
 from flask import flash, redirect, url_for
-from flask_login import login_required, login_manager, current_user
+from flask_login import login_required, current_user
 from flask import Blueprint, render_template
+
+from app_flow.workspace.form import NewTask
 
 
 blueprint = Blueprint('workplace', __name__, url_prefix='/workplace')
@@ -17,7 +19,9 @@ def home():
         return redirect(url_for('auth.login'))
 
 
-@blueprint.route('/tasks', methods=['GET'])
+@blueprint.route('/new', methods=['GET'])
 @login_required
-def tasks():
-    return render_template('tasks.html')
+def create_new_task():
+    form = NewTask()
+    title = 'Новая задача'
+    return render_template('tasks/create_task.html', form=form, title=title)
