@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -42,3 +44,15 @@ class Employee(UserMixin, db.Model):
 
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password, password)
+
+
+class Task(UserMixin, db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    employee_id = db.Column(
+        db.Integer, db.ForeignKey('employee.id', ondelete='CASCADE'),
+        nullable=False)
+    title = db.Column(db.String, nullable=False)
+    describe = db.Column(db.String, nullable=False)
+    create_time = db.Column(db.DateTime, default=datetime.now())
+    status = db.Column(db.Boolean, default=True)

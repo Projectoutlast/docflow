@@ -1,7 +1,9 @@
 {% extends "base_workspace.html" %}
 
 {% block content %}
-<form action="" method="POST">
+{% include('messages.html') %}
+<form action="{{ url_for('workplace.task_create_process') }}" method="POST">
+    {{ form.hidden_tag() }}
     <div class="col-7 mb-3 text-start">
         <label for="exampleFormControlInput1" class="form-label">Тема</label>
         {{ form.title(class="form-control row-3") }}

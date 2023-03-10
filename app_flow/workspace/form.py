@@ -4,6 +4,9 @@ from wtforms.validators import DataRequired
 
 
 class NewTask(FlaskForm):
-    title = StringField('Тема', validators=[DataRequired()])
-    describe = TextAreaField('Описание', validators=[DataRequired()])
+
+    '''Form for create a new task'''
+
+    title = StringField(validators=[DataRequired()])
+    describe = TextAreaField(validators=[DataRequired()])
     submit = SubmitField('Создать')

@@ -11,7 +11,7 @@ blueprint = Blueprint('register', __name__, url_prefix='/register')
 @blueprint.route('/register-company', methods=['POST', 'GET'])
 def register_company():
 
-    '''Page of registration for company'''
+    '''Page for register a company'''
 
     form = CompanyRegister()
     title = 'Регистрация компании'
@@ -21,7 +21,7 @@ def register_company():
 @blueprint.route('/company-register-procces', methods=['POST', 'GET'])
 def company_register_procces():
 
-    '''Process registration for company'''
+    '''Process for register a company'''
 
     form = CompanyRegister()
     if form.validate_on_submit():
@@ -58,7 +58,7 @@ def company_register_procces():
 @blueprint.route('/register-employee', methods=['POST', 'GET'])
 def register_employee():
 
-    '''Page of registration for employee'''
+    '''Page for register a employee'''
 
     form = EmployeeRegister()
     title = 'Регистрация пользователя'
@@ -68,7 +68,7 @@ def register_employee():
 @blueprint.route('/employee-register-procces', methods=['POST', 'GET'])
 def employee_register_procces():
 
-    '''Process registration for employee'''
+    '''Process for register a employee'''
 
     form = EmployeeRegister()
     if form.validate_on_submit():

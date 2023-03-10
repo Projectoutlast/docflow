@@ -4,6 +4,9 @@ from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 
 class CompanyRegister(FlaskForm):
+
+    '''Form for register a company'''
+
     type_company = StringField(
         'Введите форму собственности', validators=[
             DataRequired(), Length(max=20)])
@@ -24,6 +27,9 @@ class CompanyRegister(FlaskForm):
 
 
 class EmployeeRegister(FlaskForm):
+
+    '''Form for register a employee'''
+
     last_name = StringField(
         'Введите Вашу фамилию', validators=[DataRequired(), Length(max=30)])
     first_name = StringField(

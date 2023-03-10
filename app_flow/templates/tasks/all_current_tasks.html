@@ -1,0 +1,25 @@
+{% extends "base_workspace.html" %}
+
+{% block content %}
+{% for task in tasks %}
+<ul class="list-group list-group-flush">
+    <li class="list-group-item text-start">{% print(task[0]) %}</li>
+</ul>
+<ul class="list-group">
+    <li class="list-group-item text-start row-3">{% print(task[1]) %}</li>
+    <div class="dropdown text-start">
+        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Действие
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Закрыть</a></li>
+          <li><a class="dropdown-item" href="#">Перенести</a></li>
+          <li><a class="dropdown-item" href="#">Отменить</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Редактировать</a></li>
+        </ul>
+      </div>
+    <br>
+</ul>
+{% endfor %}
+{% endblock %}

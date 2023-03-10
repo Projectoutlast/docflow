@@ -6,6 +6,7 @@ from app_flow.schema_db import Company, Employee
 from app_flow.register.views import blueprint as reg_blueprint
 from app_flow.athentication.views import blueprint as auth_blueprint
 from app_flow.workspace.views import blueprint as work_blueprint
+from app_flow.workspace.queries import blueprint as query_blueprint
 
 
 def create_app():
@@ -30,6 +31,7 @@ def create_app():
     app.register_blueprint(reg_blueprint)
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(work_blueprint)
+    app.register_blueprint(query_blueprint)
 
     @app.route('/')
     def index():

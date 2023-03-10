@@ -30,7 +30,7 @@
                 Задачи
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Текущие</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('queries.all_current_tasks') }}">Текущие</a></li>
                 <li><a class="dropdown-item" href="#">Выполненные</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('workplace.create_new_task') }}">Новая задача</a></li>

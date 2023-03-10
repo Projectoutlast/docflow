@@ -12,7 +12,7 @@ blueprint = Blueprint('auth', __name__)
 @blueprint.route('/login', methods=['POST', 'GET'])
 def login():
 
-    '''Page authentication function'''
+    '''Page for authentication'''
 
     form = EmployeeLogin()
     title = 'Вход'
@@ -22,7 +22,7 @@ def login():
 @blueprint.route('/login-post', methods=['POST'])
 def login_post():
 
-    '''Process authentication function'''
+    '''Process for authentication'''
 
     form = EmployeeLogin()
     if form.validate_on_submit():
@@ -43,5 +43,8 @@ def login_post():
 @blueprint.route('/logout')
 @login_required
 def logout():
+
+    '''Process for logout'''
+
     logout_user()
     return redirect(url_for('auth.login'))
